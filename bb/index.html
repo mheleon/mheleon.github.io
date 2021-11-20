@@ -1,0 +1,44 @@
+<html lang="en">    
+<head>    
+  <title>Makos' bb</title>    
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript">    
+  $(document).ready(function(){
+   var initialDate = new Date("09/03/2021");
+   var today = new Date();
+   var differenceInTime = today.getTime() - initialDate.getTime();
+   var differenceInDays = differenceInTime / (1000 * 3600 * 24 * 7);
+   var progressBarVal=Math.ceil(differenceInDays);
+   console.log(differenceInDays);
+   console.log(Math.ceil(differenceInDays));
+   
+   var differenceInMonths = today.getMonth() - initialDate.getMonth() + (12 * (today.getFullYear() - initialDate.getFullYear()));
+   console.log(differenceInMonths);
+   
+   if (progressBarVal>39) progressBarVal = 39;
+   if (differenceInMonths>9) differenceInMonths = 9;
+   
+   var weekly="<div class='progress-bar bg-success progress-bar-striped progress-bar-animated' style='width:"+progressBarVal*100/39+"%'>"+progressBarVal+" semanas</div>";
+   document.getElementById("weekly").innerHTML = weekly;   
+   
+   var montly="<div class='progress-bar progress-bar-striped progress-bar-animated' style='width:"+differenceInMonths*100/9+"%'>"+differenceInMonths+" meses</div>";    
+   document.getElementById("montly").innerHTML = montly;
+  });    
+  </script>    
+</head>    
+<body>    
+	
+<div class="container">    
+  <h1 class="text-center mt-5 display-4 text-primary">¿Cuánto tiempo lleva con nosotros bb?</h1>
+  <br>
+  <div class="progress" id="weekly"></div>
+  <br>
+  <div class="progress" id="montly"></div>
+</div>    
+	
+</body>    
+</html> 
